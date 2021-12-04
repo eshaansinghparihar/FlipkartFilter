@@ -1,23 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './Header';
+import Products from './Products';
+import FilterComponent from './FilterComponent';
+import { useEffect, useState } from 'react';
+import productsData from './products.json';
 
 function App() {
+  const [displayProducts, setDisplayProducts]=useState([])
+  const [update,setUpdate]=useState(0)
+  useEffect(()=>{
+    setDisplayProducts(productsData)
+  },update)
+  function handleProductChange(value){
+    setDisplayProducts(value)
+  }
+  function handleUpdate(value){
+    setUpdate(value)
+  }
+  // console.log(displayProducts)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <FilterComponent displayProducts={displayProducts} handleProductChange={handleProductChange} update={update} handleUpdate={handleUpdate}/>
+      <Products products={displayProducts}/>
     </div>
   );
 }
