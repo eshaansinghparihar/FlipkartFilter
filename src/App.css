@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+button{
+  padding:1fr;
+  color:#fff;
+  background-color: #00000a;
+  outline: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  padding:8px
+}
+select{
+  padding:1fr;
+  color:#fff;
+  background-color: #00000a;
+  outline: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  padding:8px
+}

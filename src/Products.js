@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import './Products.css';
+import { useHistory } from "react-router-dom";
 
 
-function Products({products}){
-    
+function Products({cart, products,handleCartUpdate , handleUpdate , update}){
+    const history = useHistory();
+    function addtoCart(item){
+        
+        handleCartUpdate(item)
+        handleUpdate(update+1)
+        let path = `cart`; 
+        history.push(path);
+    }
 
     const displayProduct=()=>products.map(product=>{
             return(
@@ -19,6 +27,7 @@ function Products({products}){
                         <div className="size">{size}</div>
                         )
                     })}
+                    {cart.some(item => (item.name === product.name))?<button>Added To Cart</button>:<button onClick={()=>addtoCart(product)}>Add To Cart</button>}
                     </div>
                 </div>
             )
